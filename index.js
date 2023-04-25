@@ -22,6 +22,12 @@ app.get("/",async(req,res)=>{
     res.json(proveedores);
 });
 
+//Eliminar
+app.get("/eliminar/:cb",async(req,res)=>{
+    await Proveedor.findOneAndDelete({clave:req.params.cb},req.body);
+    res.redirect("/");
+})
+
 app.post("/insertar",async(req,res)=>{
     const proveedorInsertado=new Proveedor(req.body);
     await proveedorInsertado.save();
