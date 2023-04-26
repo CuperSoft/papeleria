@@ -25,6 +25,19 @@ app.get("/",async(req,res)=>{
     const proveedores=await Proveedor.find();
     res.render('index',{proveedores});
 });
+
+//Eliminar Proveedor
+app.delete("/eliminar/:cb",async(req,res)=>{
+    await Proveedor.findOneAndDelete({clave:req.params.cb});
+    res.json('{"status":"proveedor eliminado"}');
+})
+
+app.post("/insertar",async(req,res)=>{
+    const proveedorInsertado=new Proveedor(req.body);
+    await proveedorInsertado.save();
+    res.json('{"status":"proveedor insertado"}');
+}); 
+
 //Insertar nuevas Ventas
 app.post("/insertarVenta",async(req,res)=>{
     const VentaInsertada=new Venta(req.body);
