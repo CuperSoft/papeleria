@@ -8,12 +8,10 @@ const app=express();
 
 //Settings 
 app.set('port',process.env.PORT||3600);
-app.set('view engine','ejs')
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended:false}));
 
 //Middlewares
-app.use(express.urlencoded({extended:false}))
 app.use(morgan('dev'));
 app.use(express.json()); 
 
@@ -25,7 +23,7 @@ mongoose.connect("mongodb+srv://dbUser:230486PRO@cluster0.qjy1x.mongodb.net/pape
 //Routes
 app.get("/",async(req,res)=>{
     const proveedores=await Proveedor.find();
-    res.json(proveedores);
+    res.render('index',{proveedores});
 });
 
 app.post("/insertar",async(req,res)=>{
