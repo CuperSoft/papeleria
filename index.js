@@ -24,7 +24,7 @@ app.get("/",async(req,res)=>{
 
 //Eliminar
 app.delete("/eliminar/:cb",async(req,res)=>{
-    await Proveedor.findOneAndDelete({clave:req.params.cb},req.body);
+    await Proveedor.findOneAndDelete({clave:req.params.cb});
     res.json('{"status":"proveedor eliminado"}');
 })
 
