@@ -25,9 +25,6 @@ app.get("/",async(req,res)=>{
     const proveedores=await Proveedor.find();
     res.render('index',{proveedores});
 });
-
-
-
 //Insertar nuevas Ventas
 app.post("/insertarVenta",async(req,res)=>{
     const VentaInsertada=new Venta(req.body);
