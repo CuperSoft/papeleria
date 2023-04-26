@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Papeleria</title>
+</head>
+<body>
+    <div class="container">
+      <div class="row col-lg-12">
+        <!--Aqui va la barra de navegacion-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Ventas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-5">
+          <!--Aqui va el formulario de registro-->
+          <div class="card">
+            <div class="card-body">
+              <form action="/insertarVenta" method="post">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <label for="txtnumVenta" class="form-label">Numero de Ventas</label>
+                    <input type="text" id="txtCodigoBarras" class="form-control" name="numVenta">
+                  </div>
+                  <div class="col-lg-8">
+                    <label for="txtproducto" class="form-label">Producto</label>
+                    <input type="text" id="txtCodigoBarras" class="form-control" name="producto">
+                  </div>                
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <label for="txtpreciounitario" class="form-label">Precio Unitario</label>
+                    <input type="number" id="txtMarca" class="form-control" name="preciounitario">
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="txtcantidad" class="form-label">Cantidad</label>
+                    <input type="number" id="txtExistencias" class="form-control" name="cantidad">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-6">
+                    <label for="txttotal" class="form-label">Total</label>
+                    <input type="number" id="txtPrecioC" class="form-control" name="total">
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="txtiva" class="form-label">IVA</label>
+                    <input type="text" id="txtPrecioV" class="form-control" name="iva">
+                  </div>
+                </div>
+                <div class="row">
+                  <div>
+                    <div class="col-lg-3">
+                      <button class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <!--Aqui va la tabla-->
+          <table class="table table-dark table-striped">
+            <caption>Ventas</caption>
+            <thead class="table-dark">
+              <!--Encabezado-->
+              <tr>
+                <th scope="col">Numero de Venta</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Total</th>
+                <th colspan="2">IVA</th>
+              </tr>
+            </thead>
+            <tbody class="table-info">
+                <!-- Cuerpo -->
+                <% ventas.forEach(venta=>{ %>
+                    <tr>
+                        <td><%= venta.numVenta %></td>
+                        <td><%= venta.producto %></td>
+                        <td><%= venta.preciounitario %></td>
+                        <td><%= venta.cantidad %></td>
+                        <td><%= venta.total %></td>
+                        <td><%= venta.iva %></td>
+                        <td>
+                            <a href="/<%= venta.numVenta %>" class="btn btn-warning">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/eliminar/<%= venta.numVenta %>" class="btn btn-danger">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                <%}) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
