@@ -1,18 +1,18 @@
 const {Schema,model}=require ('mongoose');
 
-const proveedorSchema=new Schema({
-    clave:{
+const dulcesSchema=new Schema({
+    codigobarras:{
         type:String,
         require:true,
         unique:true
     },
     nombre:String,
-    apellidos:String,
-    empresa:String,
-    telefono:String,
-    rfc:String
+    marca:String,
+    codigoneto:String,
+    precioventa:String,
+    existencias:String
 },{
     versionKey:false,
     timestamps:true
 });
-module.exports=model('Proveedor',proveedorSchema);
+module.exports=model('Dulces',dulcesSchema);
