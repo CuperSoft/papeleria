@@ -1,7 +1,7 @@
 {
-  "name": "papeleria",
+  "name": "dulceria",
   "version": "1.0.0",
-  "description": "Práctica con node js, express, mongoose y mongodb",
+  "description": "proyceto dulceria en proceso",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js"
